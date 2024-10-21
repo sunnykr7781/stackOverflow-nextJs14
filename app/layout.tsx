@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React from "react"
 import {
   ClerkProvider,
   SignInButton,
+  // eslint-disable-next-line no-unused-vars
   SignedIn,
   SignedOut,
   UserButton,
 } from "@clerk/nextjs"
 import "./globals.css"
+// eslint-disable-next-line camelcase
 import { Inter, Space_Grotesk } from "next/font/google"
 import type { Metadata } from "next"
 import { ThemeProvider } from "@/context/ThemeProvider"
