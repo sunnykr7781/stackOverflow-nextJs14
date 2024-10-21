@@ -52,6 +52,7 @@ const Metric = ({
   return (
     <div className="flex-center flex-wrap gap-1">
       {metricContent}
+      console.log();
     </div>
   )
 }

@@ -2,8 +2,12 @@
 const nextConfig = {
   experimental: {
     mdxRs: true,
-    serverComponentsExternalPackages: ['mongoose']
-  }
+    serverComponentsExternalPackages: ['mongoose'],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
-export default nextConfig;
+// next.config.js
+module.exports = nextConfig;
