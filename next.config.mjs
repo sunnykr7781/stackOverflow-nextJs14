@@ -9,5 +9,5 @@ const nextConfig = {
   },
 };
 
-// next.config.js
-module.exports = nextConfig;
+// Export the configuration using ES modules syntax
+export default nextConfig;
