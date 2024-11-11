@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server';
 
-export function middleware(req: Request): NextResponse | undefined {
+export function middleware(req: NextRequest): NextResponse | undefined {
   const url = req.nextUrl.clone();
   const publicRoutes = ['/', '/api/webhook', 'question/:id', '/tags', '/tags/:id', '/profile/:id', '/community', '/jobs'];
 
@@ -13,5 +13,5 @@ export function middleware(req: Request): NextResponse | undefined {
 }
 
 export const config = {
-  matcher: ['/(?!_next/static|public/fonts|public/images|public/icons|public/manifest.json).*'],
-};
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+}
