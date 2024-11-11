@@ -1,19 +1,28 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
-import { NextResponse, NextRequest } from 'next/server';
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
+const isPublicRoute = createRouteMatcher([
+  // Add your public routes here
+  '/',
+    '/api/webhook',
+    '/question/:id',
+    '/tags',
+    '/tags/:id',
+    '/profile/:id',
+    '/community',
+    '/jobs',
+  "/sign-in",
+  "/sign-up",
+  "/forgot-password",
+  "/", // Homepage or other public routes
+]);
 
-export function middleware(req: NextRequest): NextResponse | undefined {
-  const url = req.nextUrl.clone();
-  const publicRoutes = ['/', '/api/webhook', 'question/:id', '/tags', '/tags/:id', '/profile/:id', '/community', '/jobs'];
-
-  if (publicRoutes.includes(url.pathname)) {
-    return NextResponse.next();
+export default clerkMiddleware((auth, request) => {
+  if (!isPublicRoute(request)) {
+    auth().protect();
   }
+});
 
-  // Handle authenticated routes here, e.g., redirect to login page if not authenticated
-  // ...
-}
-export default clerkMiddleware()
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
-}
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"], 
+
+};
