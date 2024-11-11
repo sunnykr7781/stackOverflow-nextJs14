@@ -10,9 +10,7 @@ const isPublicRoute = createRouteMatcher([
     '/profile/:id',
     '/community',
     '/jobs',
-  "/sign-in",
-  "/sign-up",
-  "/forgot-password",
+
   "/", // Homepage or other public routes
 ]);
 
