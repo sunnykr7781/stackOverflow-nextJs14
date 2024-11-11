@@ -1,4 +1,6 @@
+import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse, NextRequest } from 'next/server';
+
 
 export function middleware(req: NextRequest): NextResponse | undefined {
   const url = req.nextUrl.clone();
@@ -11,7 +13,7 @@ export function middleware(req: NextRequest): NextResponse | undefined {
   // Handle authenticated routes here, e.g., redirect to login page if not authenticated
   // ...
 }
-
+export default clerkMiddleware()
 export const config = {
   matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 }
